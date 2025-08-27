@@ -1,0 +1,30 @@
+services:
+    client:
+        build:
+            context: ../Client
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes:
+            - "../Client:/app"
+            - /app/node_modules
+        command: npm run dev
+    server:
+        build: ../server
+        ports:
+            - "8080:8080"
+        volumes:
+           - "../server:/app"
+
+    db:
+        image: mysql:9.4.0
+        restart: always
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+            MYSQL_DATABASE: Listedd
+        volumes:
+            - dbdata:/var/lib/mysql
+volumes:
+    dbdata:
