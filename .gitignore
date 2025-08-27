@@ -1,6 +1,6 @@
 .devcontainer/.ENV
 
-
+server/.ENV
 
 # dependencies
 client/node_modules

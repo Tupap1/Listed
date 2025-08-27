@@ -9,6 +9,18 @@ services:
             - "../Client:/app"
             - /app/node_modules
         command: npm run dev
+        develop:
+          watch:
+            - action: sync
+              path: ../client/src
+              target: /app/src
+              ignore:
+                - node_modules
+            - action: rebuild
+              path: package.json
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+            - WATCHPACK_POLLING=true
     server:
         build: ../server
         ports:
