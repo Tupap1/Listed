@@ -1,4 +1,4 @@
-module github.com/Tupap1/Listedd
+module github.com/Tupap1/Listed/server
 
 go 1.24.5
 

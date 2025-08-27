@@ -27,14 +27,18 @@ services:
             - "8080:8080"
         volumes:
            - "../server:/app"
+        depends_on:
+            - db
+        environment:
+            DATABASE_URL: "mysql://root:${ROOT_PASS}@db:3308/Listedd"
 
     db:
         image: mysql:9.4.0
         restart: always
         ports:
-            - "3307:3306"
+            - "3308:3306"
         environment:
-            MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+            MYSQL_ROOT_PASSWORD: PASS
             MYSQL_DATABASE: Listedd
         volumes:
             - dbdata:/var/lib/mysql
