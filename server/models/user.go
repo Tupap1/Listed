@@ -9,13 +9,13 @@ type User struct {
 	ID 			 uint	`gorm:"not null;primaryKey"`
 	RoleID		 uint 	`gorm:"not null;"`
 	Username 	 string
-	Email        string `gorm:"uniqueIndex;not null"`
+	Email        string `gorm:"not null"`
 	PasswordHash string `gorm:"not null"`             
 	Name         string
 }
 
 type RefreshToken struct {
 	gorm.Model
-	Token string `gorm:"uniqueIndex;not null"`
+	Token string `gorm:"not null"`
 	UserID uint   
 }

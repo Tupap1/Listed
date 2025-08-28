@@ -1,0 +1,26 @@
+services:
+    client:
+        build: ../Client
+        ports:
+            - "3000:3000"
+        volumes:
+            - "../Client:/app"
+    server:
+        build: ../
+        ports:
+            - "8080:8080"
+        volumes:
+           - "../:/app"
+
+    db:
+        image: mysql:9.4.0
+        restart: always
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${ROOT_PASS}
+            MYSQL_DATABASE: Listedd
+        volumes:
+            - dbdata:/var/lib/mysql
+volumes:
+    dbdata:

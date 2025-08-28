@@ -5,23 +5,35 @@ import (
 		"github.com/gofiber/fiber/v2"
 		"gorm.io/driver/mysql"
 		"gorm.io/gorm"
-		//"os"
+		"os"
+		"log"
 		"github.com/Tupap1/Listed/server/models"
+		"github.com/joho/godotenv"
 	)
 
 func main() {
-	dsn := os.Getenv("root:7iu7Wi0@tcp(127.0.0.1:3306)/adm?charset=utf8mb4&parseTime=True&loc=Local")
+
+	err := godotenv.Load()
+  	if err != nil {
+    	log.Fatal("Error loading .env file")
+  		}
+	dsn := os.Getenv("LOCALDB_DSN")
+	fmt.Println(dsn)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		fmt.Println("failed to connect databaseeee:", err)
+		fmt.Println("failed to connect database:", err)
 	}
 
 
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		db.AutoMigrate(&models.User{})
-		return c.SendString("tablas creadas porfavorsss")
+		return c.SendString("Andres eres el mejor del mundo")
+	})
+	
+	app.Get("/db/update", func(c *fiber.Ctx) error {
+		db.AutoMigrate(&models.RefreshToken{}, &models.Products{})
+		return c.SendString("Update DB")
 	})
 
 	app.Listen(":8080")

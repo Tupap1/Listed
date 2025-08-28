@@ -38,9 +38,6 @@ services:
         ports:
             - "3308:3306"
         environment:
-            MYSQL_ROOT_PASSWORD: PASS
-            MYSQL_DATABASE: Listedd
-        volumes:
-            - dbdata:/var/lib/mysql
-volumes:
-    dbdata:
+            MYSQL_ROOT_PASSWORD: "pass"
+
+
