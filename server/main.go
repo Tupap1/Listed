@@ -32,7 +32,7 @@ func main() {
 	})
 	
 	app.Get("/db/update", func(c *fiber.Ctx) error {
-		db.AutoMigrate(&models.RefreshToken{}, &models.Products{})
+		db.AutoMigrate(&models.RefreshToken{})
 		return c.SendString("Update DB")
 	})
 

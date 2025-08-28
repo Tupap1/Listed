@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"auth-service/models"
+	"github.com/Tupap1/Listed/server/models"
 
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"

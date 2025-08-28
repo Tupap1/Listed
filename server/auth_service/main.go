@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/Tupap1/Listed/server/auth_service/handlers"
-	"github.com/Tupap1/Listed/server/auth_service/services"
+	"auth_service/handlers"
+	"auth_service/services"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/driver/mysql"

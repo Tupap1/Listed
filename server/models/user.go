@@ -1,7 +1,8 @@
 package models
 
-
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
@@ -17,5 +18,6 @@ type User struct {
 type RefreshToken struct {
 	gorm.Model
 	Token string `gorm:"not null"`
-	UserID uint   
+	UserID uint 
+	ExpiresAt time.Time `gorm:"not null"`  
 }
