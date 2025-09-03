@@ -69,8 +69,7 @@ func (s *AuthService) GenerateJWT(user *models.User) (string, error) {
 func (s *AuthService) GenerateRefreshToken(userID uint) (*models.RefreshToken, error) {
 	token := &models.RefreshToken{
 		UserID:    userID,
-		Token:     "random_string_123", 
-		ExpiresAt: time.Now().Add(time.Hour * 24 * 7),
+		Token:     "random_string_123"
 	}
 	result := s.db.Create(token)
 	if result.Error != nil {
